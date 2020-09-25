@@ -8,11 +8,17 @@ cache:
 env:
   - CI=true
 script:
+  # 生成 dist包
   - npm run build-storybook
 deploy:
+  # 部署到GitHub Pages。
+  # 除此之外，Travis CI还支持发布到fir.im、AWS、Google App Engine等
   provider: pages
+  # 避免 Travis CI在部署之前清空生成的文件
   skip_cleanup: true
   local_dir: storybook-static
+  # Github oauth token
   github_token: $GITHUB_TOKEN
+  # 发布时机 master分支push的时候
   on:
     branch: master
