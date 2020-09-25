@@ -10,7 +10,7 @@ storiesOf('Welcome page', module)
                 <br/><br/>
                 <h3>安装试试</h3>
                 <code>
-                    npm install yan-ui --save
+                    npm install yan-brick --save
                 </code>
             </>
         )

@@ -49,7 +49,7 @@ storiesOf('Button Component', module)
     .add('Button', defaultButton) // 这个回调函数最钟要返回你的component，我们不直接在这写函数体，用变量名摘出去吧，优雅点。
     .add('不同尺寸的Button', buttonWithSize, {
         info: {
-            inline: false
+            inline: true// 默认为false，显示为show info按钮
         }
     })
     .add('不同类型的Button', buttonWithType)

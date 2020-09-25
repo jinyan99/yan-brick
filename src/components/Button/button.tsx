@@ -49,7 +49,7 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
  * 这是我们的第一个Button组件
  * ## Button header
  * ~~~js
- * import {Button} from 'yan.ui'
+ * import {Button} from 'yan-brick'
  * ~~~
  * @param {Object} props
  */
