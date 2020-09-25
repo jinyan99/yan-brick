@@ -10,8 +10,11 @@
 		"React"
 	],
 	"private": false,
-	"homepage": "",
-	"repository": {},
+	"homepage": "https://jinyan99.github.io/yan-brick",
+	"repository": {
+        "type": "git",
+        "url": "https://github.com/jinyan99/yan-brick"
+    },
 	"files": [
 		"dist"
 	],
