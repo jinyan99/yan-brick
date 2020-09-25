@@ -1,6 +1,6 @@
 {
 	"name": "yan-brick",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "React components library",
 	"author": "JinYan",
 	"license": "MIT",
@@ -8,7 +8,10 @@
 		"Component",
 		"UI",
 		"React"
-	],
+    ],
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
 	"private": false,
 	"homepage": "https://jinyan99.github.io/yan-brick",
 	"repository": {
