@@ -1,5 +1,7 @@
 import { configure, addDecorator, addParameters } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
+import { DocsPage, DocsContainer } from "@storybook/addon-docs/blocks";
+import { create } from "@storybook/theming";
 import React from 'react';
 
 // 全局引入样式
@@ -24,11 +26,31 @@ const storyWrapper = (storyFn: any) => (
 );
 addDecorator(storyWrapper);
 addDecorator(withInfo);
-addParameters({ info: { inline: true, header: false } });
+addParameters({
+    info: { inline: true, header: false },
+    options: {
+		theme: create({
+            base:'light',
+            brandTitle: "😘&nbsp;&nbsp;Yan-Brick  UI库&nbsp;&nbsp;😘",
+			brandUrl: "https://github.com/jinyan99/yan-brick"
+		})
+    },
+    docs: {
+		container: DocsContainer,
+		page: DocsPage,
+		PreviewSource: "open"
+    },
+    dependencies: {
+		withStoriesOnly: true,
+		hideEmpty: true
+	}
+
+});
 
 // 写成回调函数的形式，将返回一个数组，第一项展示欢迎页即可
 const loaderFn = () => {
-	const allExports = [require('../src/welcome.stories.tsx')];
+    const allExports = [require('../src/welcome.stories.tsx')];
+    // 动态加载story，借用了webpack的context API
 	const req = require.context('../src/components', true, /\.stories\.tsx$/);
 	req.keys().forEach((fname) => allExports.push(req(fname)));
 	return allExports;

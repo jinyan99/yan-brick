@@ -1,0 +1,60 @@
+.domain {
+  margin: 10px;
+}
+
+.input {
+  border: 0;
+}
+
+.input:focus{
+  outline:none;
+}
+
+.select {
+  max-width: 212px;
+  border: 1px solid #9A9A9A;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.menu {
+  max-width: 400px;
+  height: 200px;
+  border: 1px solid #9A9A9A;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.domainArr {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.domainArr .items {
+  max-width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.domainArr .items .item {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.all {
+  cursor: pointer;
+}
+
+.selectItem {
+  padding: 5px;
+  background-color: rgb(233, 230, 230);
+}
+
+.current.item {
+  color: rgb(7, 193, 250);
+}

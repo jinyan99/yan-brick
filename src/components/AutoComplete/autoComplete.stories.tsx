@@ -92,4 +92,4 @@ const SimpleComplete = () => {
 	);
 };
 
-storiesOf('AutoComplete Component', module).add('AutoComplete', SimpleComplete);
+storiesOf('ENTRY/AutoComplete 自动补全', module).add('AutoComplete', SimpleComplete);

@@ -1,0 +1,90 @@
+
+.bigbear-switch-label{
+  cursor: pointer;
+  position: relative;
+  input{
+      opacity: 0;
+  }
+}
+
+.bigbear-switch-label-disabled{
+  cursor: not-allowed;
+  opacity: 60%;
+}
+
+
+.bigbear-switch-label-size-default{
+  height: $switch-height-default;
+  width: $switch-width-default;
+  input:checked~ .bigbear-switch-btn-size-default{
+      left:calc(100% - #{$switch-height-default})
+  }
+}
+.bigbear-switch-check-size-default{
+  border-radius: $switch-border-radius-default;
+}
+.bigbear-switch-btn-size-default{
+  height: $switch-height-default;
+  width: $switch-height-default;
+}
+
+
+.bigbear-switch-label-size-lg{
+  height: $switch-height-lg;
+  width: $switch-width-lg;
+  input:checked~ .bigbear-switch-btn-size-lg{
+      left:calc(100% - #{$switch-height-lg})
+  }
+}
+.bigbear-switch-check-size-lg{
+  border-radius: $switch-border-radius-lg;
+}
+.bigbear-switch-btn-size-lg{
+  height: $switch-height-lg;
+  width: $switch-height-lg;
+}
+
+
+
+
+@each $key,$val in $theme-colors{
+  .bigbear-switch-check-#{$key}{
+     @include switch-neu(nth($val, 1),nth($val,3),nth($val,4));
+
+     color:#{nth($val,2)};
+     height: 100%;
+     left: 0;
+     padding: 1px;
+     position: absolute;
+     top: 0;
+     width: 100%;
+  }
+}
+@each $key,$val in $theme-colors{
+  .bigbear-switch-btn-#{$key}{
+      @include neufactory-noactive(nth($val, 1),nth($val,3),nth($val,4));
+
+      border-radius: 50%;
+      display: inline-block;
+      left:0;
+      position: absolute;
+      transition:all .36s cubic-bezier(.78,.14,.15,.86);
+  }
+  
+}
+
+.bigbear-switch-label-size-sm{
+  height: $switch-height-sm;
+  width: $switch-width-sm;
+  input:checked~ .bigbear-switch-btn-size-sm{
+      left:calc(100% - #{$switch-height-sm})
+  }
+}
+.bigbear-switch-check-size-sm{
+  border-radius: $switch-border-radius-sm;
+  padding: 0;
+}
+.bigbear-switch-btn-size-sm{
+  height: $switch-height-sm;
+  width: $switch-height-sm;
+}

@@ -24,7 +24,7 @@ interface IMenuContext {
 // context需要给子组件用所以export出去
 export const MenuContext = createContext<IMenuContext>({ index: '0' });
 // 当我们点击MenuItem时，会切换active状态，而且active有且只有一个，就需要在整个父组件中添加一个state，指示当前state是哪一个
-const Menu: React.FC<MenuProps> = (props) => {
+export const Menu: React.FC<MenuProps> = (props) => {
 	const { className, mode, style, children, defaultIndex, onSelect, defaultOpenSubMenus } = props;
 	const [currentActive, setActive] = useState(defaultIndex);
 	const classes = classNames('viking-menu', className, {

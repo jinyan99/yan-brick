@@ -1,0 +1,13 @@
+.yanbrick-form {
+    @include neufactory-noactive($white,$neu-whiteshadow1,$neu-whiteshadow2);
+    padding: 20px;
+    .yanbrick-form-validate {
+        height: 20px;
+        color: $red;
+        font-size: 13px;
+        margin-bottom: $input-margin;
+        margin-top: $input-margin;
+         position:relative;
+         top: -24px;
+    }
+}

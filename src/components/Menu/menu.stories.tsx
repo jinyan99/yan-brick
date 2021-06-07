@@ -27,5 +27,5 @@ export const defaultMenu = () => (
   </Menu>
 )
 
-storiesOf('Menu Component', module)
+storiesOf('REACTION/Menu 菜单', module)
 .add('Menu', defaultMenu )

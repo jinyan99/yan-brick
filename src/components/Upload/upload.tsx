@@ -11,8 +11,9 @@ export interface UploadFile {
 	size: number;
 	name: string;
 	status?: UploadFileStatus;
-	percent?: number;
-	raw?: File;
+    percent?: number;
+    //这个是只用于本地展示数据的主线，真正上传的是原文件对象即raw的值注意区分；
+	raw: File;
 	response?: any;
 	error?: any;
 }
@@ -58,28 +59,16 @@ export const Upload: FC<UploadProps> = (props) => {
 	const fileInput = useRef<HTMLInputElement>(null);
 	const [fileList, setFileList] = useState<UploadFile[]>(
 		defaultFileList || []
-	);
-	console.log(fileList);
-	const updateFileList = (
-		updateFile: UploadFile,
-		updateObj: Partial<UploadFile>
-	) => {
-		setFileList((prevList) => {
-			return prevList.map((file) => {
-				if (file.uid === updateFile.uid) {
-					return { ...file, ...updateObj };
-				} else {
-					return file;
-				}
-			});
-		});
-	};
+    );
+
 	const handleClick = () => {
 		if (fileInput.current) {
 			// 记住这种dom手动触发点击事件方法
 			fileInput.current.click();
 		}
-	};
+    };
+
+	// handleFileChange ======= START
 	const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const files = e.target.files;
 		if (!files) {
@@ -90,18 +79,12 @@ export const Upload: FC<UploadProps> = (props) => {
 			fileInput.current.value = '';
 		}
 	};
-	const handleRemove = (file: UploadFile) => {
-		setFileList((prevList) => {
-			return prevList.filter((item) => item.uid !== file.uid);
-		});
-		if (onRemove) {
-			onRemove(file);
-		}
-	};
 	const uploadFiles = (files: FileList) => {
 		const postFiles = Array.from(files);
 		postFiles.forEach((file) => {
 			if (!beforeUpload) {
+                //关于拿到file数据更新到state里的方法位置，尽量减少代码重复，统一放到post里发送前都是校验好的直接统一在post里更新即可就一并处理了，
+                //否则在这写的话和下面得多写好几次
 				post(file);
 			} else {
 				const result = beforeUpload(file);
@@ -116,6 +99,7 @@ export const Upload: FC<UploadProps> = (props) => {
 		});
 	};
 	const post = (file: File) => {
+        //1--start
 		const _file: UploadFile = {
 			uid: Date.now() + 'upload-file',
 			status: 'ready',
@@ -130,23 +114,28 @@ export const Upload: FC<UploadProps> = (props) => {
 		// 改写：
 		setFileList((prevList) => {
 			return [_file, ...prevList];
-		});
+        });
 
+        //2--end
+        //准备payload数据，收纳file，支持用户自定义data，也一并收纳进formData结构中
 		const formData = new FormData();
-		formData.append(name || 'file', file);
+		formData.append(name || _file.name, _file.raw);
 		if (data) {
 			Object.keys(data).forEach((key) => {
 				formData.append(key, data[key]);
 			});
-		}
+        }
+        //开始发送
 		axios
 			.post(action, formData, {
 				headers: {
 					...headers,
 					'Content-Type': 'multipart/form-data'
-				},
+                },
+                //当跨域请求时是否提供凭据信息(cookie、HTTP认证及客户端SSL证明等)
 				withCredentials, // axios本身就支持的直接放进来就行
 				onUploadProgress: (e) => {
+                    //1-先算进度值 2- <100的话更新fileList数据状态和百分比并返给用户进度事件进度值
 					const percentage =
 						Math.round((e.loaded * 100) / e.total) || 0;
 					if (percentage < 100) {
@@ -156,7 +145,7 @@ export const Upload: FC<UploadProps> = (props) => {
 							status: 'uploading'
 						});
 						if (onProgress) {
-							onProgress(percentage, file);
+							onProgress(percentage, _file.raw);
 						}
 					}
 				}
@@ -168,7 +157,7 @@ export const Upload: FC<UploadProps> = (props) => {
 					response: resp.data
 				});
 				if (onSuccess) {
-					onSuccess(resp.data, file);
+					onSuccess(resp.data, _file.raw);
 				}
 				if (onChange) {
 					onChange(file);
@@ -184,6 +173,31 @@ export const Upload: FC<UploadProps> = (props) => {
 					onChange(file);
 				}
 			});
+    };
+    // 封装的一个特定输入方式的setState函数
+	const updateFileList = (
+		updateFile: UploadFile,
+		updateObj: Partial<UploadFile>
+	) => {
+		setFileList((prevList) => {
+			return prevList.map((file) => {
+				if (file.uid === updateFile.uid) {
+					return { ...file, ...updateObj };
+				} else {
+					return file;
+				}
+			});
+		});
+	};
+    // handleFileChange ======= END
+
+	const handleRemove = (file: UploadFile) => {
+		setFileList((prevList) => {
+			return prevList.filter((item) => item.uid !== file.uid);
+		});
+		if (onRemove) {
+			onRemove(file);
+		}
 	};
 
 	return (

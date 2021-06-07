@@ -11,7 +11,7 @@ export interface SubMenuProps {
 	className?: string;
 }
 
-const SubMenu: React.FC<SubMenuProps> = ({
+export const SubMenu: React.FC<SubMenuProps> = ({
 	index,
 	children,
 	title,
@@ -21,6 +21,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
 
     // 纵向模式默认展开逻辑
     const openedSubMenus = context.defaultOpenSubMenus as Array<string>;
+    // 纵向是默认展开的，横向是默认不展开的所以为false
     const isOpened = (index && context.mode === 'vertical') ? openedSubMenus.includes(index) : false;
 
     const [menuOpen,setOpen] = useState(isOpened);

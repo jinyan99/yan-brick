@@ -1,0 +1,11 @@
+.yanbrick-virtual-container {
+  display: flex;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+.virtual-custom-item {
+  width: 100%;
+  @include neufactory-noactive($white,$neu-whiteshadow1,$neu-whiteshadow2);
+  border: 1px solid #000;
+}

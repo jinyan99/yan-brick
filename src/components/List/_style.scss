@@ -1,0 +1,24 @@
+.yanbrick-list {
+  @include neufactory-noactive($white,$neu-whiteshadow1,$neu-whiteshadow2);
+  list-style-type: none;
+  padding: $list-padding;
+  max-height: 300px;
+  overflow: auto;
+}
+.list-horizontal {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.list-withHoverActive {
+  @include neufactory-hover($primary,$neu-blueshadow1,$neu-blueshadow2);
+  &:hover,&:active {
+    color: $white;
+  }
+}
+.yanbrick-list-item {
+  @include neufactory-noactive($white,$neu-whiteshadow1,$neu-whiteshadow2);
+  margin: $list-item-margin;
+  padding: $list-item-padding;
+}

@@ -71,7 +71,8 @@ export const Button: FC<ButtonProps> = (props) => {
 		[`btn-${size}`]: size,
 		// 这是只给Link类型的才加disabled类名的，不是这个类型会加disabled属性
 		disabled: btnType === 'link' && disabled
-	});
+    });
+
 	if (btnType === 'link' && href) {
 		return (
 			<a className={classes} href={href} {...restProps}>

@@ -29,7 +29,7 @@ const buttonWithType = () => (
         <Button btnType="link" href="https://baidu.com" target="blank">link button</Button>
     </>
 )
-storiesOf('Button Component', module)
+storiesOf('Display/Button 按钮', module)
     //.addDecorator(CenterDecorator) // 添加storybook的装饰器
     //.addDecorator(withInfo)
     // 展示给addon配置属性----是在StoriesOf级别上配置

@@ -41,8 +41,10 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
     // 直接这一行就可以完成这个通用功能
     useClickOutside(componentRef, () => {setSuggestions([])})
 
+
     useEffect(() => {
         if (debouncedValue && triggerSearch.current) {
+            //将value回调给用户，执行用户的筛选逻辑，返回结果值或Promise
             const results = fetchSuggestions(debouncedValue);
             if (results instanceof Promise) {
                 // 加个loading图标
@@ -60,6 +62,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
         //每次下拉菜单显示完都给它高亮Index重制为-1
         setHighlightIndex(-1)
     }, [debouncedValue])
+
 
     const highlight = (index: number) => {
         if (index < 0) index = 0;
@@ -89,29 +92,15 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
                 break
         }
     }
+
+
+    // 这个change事件函数最终是由Input子组件里的input元素上实际触发的，父组件只是传递
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		const value = e.target.value.trim();
+        const value = e.target.value.trim();
+        // 完成受控
         setInputValue(value);
         triggerSearch.current = true;
-        // //下方代码全搬到useEffect分类专门副作用函数处理了
-        // //这里要展示github用户名的列表，我们使用一个github官方的接口来做异步处理的测试
-		// if (value) {
-        //     const results = fetchSuggestions(value);
-        //     if (results instanceof Promise) {
-        //         // 加个loading图标
-        //         setLoading(true)
-        //         results.then(data => {
-        //             setLoading(false)
-        //             setSuggestions(data)
-        //         })
-        //     } else {
-        //         setSuggestions(results);
-        //     }
-		// } else {
-		// 	setSuggestions([]);
-		// }
 	};
-
 	const handleSelect = (item: DataSourceObject) => {
 		// 这个事件函数要处理三件事
 		setInputValue(item.value); // 1- input值更新进去
@@ -122,9 +111,8 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
         }
         triggerSearch.current = false;
     };
-    const renderTemplate = (item: DataSourceType) => {
-        return renderOption ? renderOption(item) : item.value
-    }
+
+
 	const generateDropdown = () => {
 		return (
 			<ul>
@@ -134,7 +122,7 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
                     })
 					return (
 						<li key={index} className={cnames} onClick={() => handleSelect(item)}>
-							{renderTemplate(item)}
+							{renderOption ? renderOption(item) : item.value}
 						</li>
 					);
 				})}
@@ -145,7 +133,6 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
 	return (
 		<div className="viking-auto-complete" ref={componentRef}>
 			<Input value={inputValue} onChange={handleChange} onKeyDown={handleKeyDown} {...restProps} />
-            {/* @TODO 图标不能正常显示，原因待查 */}
             {loading && <ul>加载中...<Icon icon="spinner" spin /></ul>}
 			{suggestions.length && generateDropdown()}
 		</div>

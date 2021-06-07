@@ -25,7 +25,7 @@ const filePromise = (file: File) => {
 const SimpleUpload = () => {
     return (
         <Upload
-            action="https://www.mocky.io/v2/5cc8019d30000098a055e76"
+            action="https://run.mocky.io/v3/cb8a5df4-9d03-4c8d-a874-e380eeeb103a"
             beforeUpload={filePromise}
             onChange={action('changed')}
             onError={action('error')}
@@ -43,5 +43,5 @@ const SimpleUpload = () => {
     )
 }
 
-storiesOf('Upload component', module)
+storiesOf('ENTRY/Upload 上传组件', module)
     .add('Upload', SimpleUpload)

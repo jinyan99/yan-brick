@@ -1,0 +1,14 @@
+.yanbrick-pagination-wrapper {
+  display: flex;
+  list-style: none;
+  .yanbrick-pagination-item {
+    > button {
+      @include neufactory-hover($primary,$neu-blueshadow1,$neu-blueshadow2);
+
+            min-width: 32px;
+            &:hover{
+                color:$white;
+            }
+    }
+  }
+}

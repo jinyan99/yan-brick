@@ -1,0 +1,56 @@
+.yanbrick-layout {
+  display: flex;
+  // flex:auto 是flex属性的快捷值(auto(1 1 auto) 和none(0 0 auto)) grow1是等分shrink1默认值会缩小0不缩小basisauto默认值主轴空间
+  flex: auto;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  .yanbrick-layout-header {
+    height: $header-height;
+  }
+  .yanbrick-layout-content {
+    // 初始值必须设flex-grow 1，当一行中只有他一个元素时它才会撑满行，否则默认不会像块元素那样撑满宽
+    // 因为他父级设了flex布局，块元素默认也是内容自适应宽
+    flex: auto;
+    flex-basis: $content-basis;
+  }
+  .yanbrick-layout-footer {
+    font-size: $font-size-sm;
+    padding: $footer-padding;
+  }
+  .yanbrick-layout-sider {
+    flex-basis: $aside-flex-basis;
+    position: relative;
+  }
+}
+
+.yanbrick-layout.yanbrick-layout-row {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: #{$content-basis + $aside-flex-basis + 20}) {
+  .yanbrick-layout-sider {
+    flex-grow: 1
+  }
+}
+
+@each $key,$val in $theme-colors {
+  .yanbrick-layout-block-#{$key} {
+    @include neufactory-noactive(nth($val,1), nth($val,3),nth($val,4));
+    color: #{nth($val,2)};
+    margin: 0;
+    padding: 0;
+  }
+  .yanbrick-layout-wrapper-#{$key} {
+    @include ringwrapper(nth($val,1),nth($val,3),nth($val,4));
+
+        color:#{nth($val,2)};
+        margin: 0;
+        padding:0;
+  }
+  .yanbrick-layout-lineargradient-#{$key} {
+    background: linear-gradient(145deg, nth($val,4), nth($val,1))
+  }
+}

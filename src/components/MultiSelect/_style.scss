@@ -1,0 +1,72 @@
+.yanbrick-multiselect {
+    position: relative;
+    width: 100%;
+    .yanbrick-multiselect-display {
+        @include neufactory-noactive($white,$neu-whiteshadow1,$neu-whiteshadow2);
+        // 让displaytext和icon两个块元素一行排列显示
+        display: flex;
+        padding: 5px;
+        width: 100%;
+        .yanbrick-multiselect-displaytext {
+            @include ringwrapper($white,$neu-whiteshadow1,$neu-whiteshadow2);
+            border-radius: 5px;
+            // 让多个Alert组件都一行显示
+            display: flex;
+            flex-grow: 1;
+            flex-wrap: wrap;
+            .yanbrick-alert{
+                // flex布局让aler组件的文字和关闭的icon都一行显示
+                display: flex;
+                flex-direction:row ;
+                flex-wrap: nowrap;
+                margin:2px;
+                padding:3px;
+                span:nth-child(1){
+                    align-items: center;
+                    display: flex;
+                    font-size: 14px;
+                    margin-right: 2px;
+                }
+                .btn{
+                    font-size: 14px;
+                    padding:1px 3px;
+                    position: static;
+                }
+            }
+        }
+        .yanbrick-multiselect-icon {
+            align-items: center;
+            display: flex;
+            margin-left: 5px;
+            width: 10px;
+        }
+    }
+    .yanbrick-multiselect-options {
+        @include neufactory-noactive($white,$neu-whiteshadow1,$neu-whiteshadow2);
+        cursor: pointer;
+        font-weight: 700;
+        overflow-y: auto;
+        padding: 10px;
+        position: absolute;
+        z-index: 9999;
+        width: 100%;
+        > li {
+            @include neufactory($white,$neu-whiteshadow1,$neu-whiteshadow2);
+            @include neufactory-hover($info,$neu-infoshadow1,$neu-infoshadow2);
+            margin: 5px;
+            padding: 5px;
+            list-style: none;
+            &:hover {
+                color: $white;
+            }
+        }
+        >.yanbrick-multiselect-option-active {
+            @include neufactory($primary,$neu-blueshadow1,$neu-blueshadow2);
+            color: $white
+        }
+    }
+    &.disabled {
+        cursor: not-allowed;
+        opacity: .5;
+    }
+}

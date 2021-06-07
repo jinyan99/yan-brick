@@ -1,9 +1,11 @@
+// 该组件样式文件写在全局styles文件夹/_animation.scss里了
+
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 // 由于这是ts文件除了要它的组件之外，我们还需要它的类型props，因为要用他的属性做一系列的继承
 import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
 
-type AnimationName =
+export type AnimationName =
 	| 'zoom-in-top'
 	| 'zoom-in-left'
 	| 'zoom-in-bottom'
@@ -15,6 +17,7 @@ type AnimationName =
 // 	animation?: AnimationName;
 // }
 
+// timeout是CSSTransitionProps必填的
 type TransitionProps = CSSTransitionProps & {
     animation?: AnimationName,
     wrapper? : boolean,

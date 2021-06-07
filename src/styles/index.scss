@@ -8,7 +8,7 @@
 @import "reboot";
 
 //mixin
-@import "mixin";
+@import "./mixin/mixin";
 
 // animation
 @import "animation";
@@ -23,20 +23,74 @@
 // icon
 @import "../components/Icon/style";
 
-//input
+// input
 @import "../components/Input/style";
 
-//auto-complete
+// auto-complete
 @import "../components/AutoComplete/style";
 
-//upload
+// upload
 @import "../components/Upload/style";
 
- //progress
+// progress
 @import "../components/Progress/style";
 
+// alert
+@import "../components/Alert/style";
 
+// tabs
+@import "../components/Tabs/style";
 
+// select
+@import "../components/Select/style";
 
+// Radio
+@import "../components/Radio/style";
 
+// checkbox
+@import "../components/Checkbox/style";
 
+// multiselect
+@import "../components/MultiSelect/style";
+
+// form
+@import "../components/Form/style";
+
+// modal
+@import "../components/Modal/style";
+
+// popconfirm
+@import "../components/Popconfirm/style";
+
+// message
+@import "../components/Message/style";
+
+// list
+@import "../components/List/style";
+
+// VirtualList
+@import "../components/VirtualList/style";
+
+// Pagination
+@import "../components/Pagination/style";
+
+// Table
+@import "../components/Table/style";
+
+// InputNumber
+@import "../components/InputNumber/style";
+
+// Switch
+@import "../components/Switch/style";
+
+// Badge
+@import "../components/Badge/style";
+
+// Layout
+@import "../components/Layout/style";
+
+// Tree
+@import "../components/Tree/style";
+
+// Linkage
+@import "../components/Linkage/style";

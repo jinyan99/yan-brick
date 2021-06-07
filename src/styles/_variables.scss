@@ -1,5 +1,5 @@
 // ===========================系统色彩预设变量======================
-// 先给组件库添加第一种中性色彩
+// 先给组件库添加第一步：中性色板
 $white: #fff !default;
 $gray-100: #f8f9fa !default;
 
@@ -20,7 +20,7 @@ $gray-900: #212529 !default;
 
 $black: #000 !default;
 
-// 这是基础色的全局预设
+// 第二步：主色色板
 $blue: #0d6efd !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
@@ -32,26 +32,45 @@ $green: #52c41a !default;
 $teal: #20c997 !default;
 $cyan: #17a2b8 !default;
 
-// 这是产品色板设定--品牌色主色副色
+// 第三步：产品色板  （设定分为：主题色 + 辅色(功能色)）
+// 主题色
 $primary: $blue !default;
 $secondary: $gray-600 !default;
-// 这是功能色
+// 功能色
 $success: $green !default;
 $info: $cyan !default;
 $warning: $yellow !default;
 $danger: $red !default;
 $light: $gray-100 !default;
 $dark: $gray-800 !default;
+
+$neu-whiteshadow1: #d9d9d9;
+$neu-whiteshadow2: #fff;
+$neu-blueshadow1: #3690d9;
+$neu-blueshadow2: #4ac2ff;
+$neu-infoshadow1: #2eb0ab;
+$neu-infoshadow2: #3eeee7;
 // 集合方式 可进行scss中的遍历
+// $theme-colors: (
+// 	'primary': $primary,
+// 	'secondary': $secondary,
+// 	'success': $success,
+// 	'info': $info,
+// 	'warning': $warning,
+// 	'danger': $danger,
+// 	'light': $light,
+// 	'dark': $dark
+// );
 $theme-colors: (
-	'primary': $primary,
-	'secondary': $secondary,
-	'success': $success,
-	'info': $info,
-	'warning': $warning,
-	'danger': $danger,
-	'light': $light,
-	'dark': $dark
+  "default":    ($white,$gray-700, $neu-whiteshadow1,$neu-whiteshadow2),
+  "primary":    ($primary,$white,$neu-blueshadow1,$neu-blueshadow2),
+  "secondary":  ($secondary,$white,#777,#a1a1a1),
+  "success":    ($success,$white,#62b234,#84f046),
+  "info":       ($info,$white,$neu-infoshadow1,$neu-infoshadow2),
+  "warning":    ($warning,$gray-700,#d9c934,#ffff46),
+  "danger":     ($danger,$white,#c33b3c,#f97677),
+  "light":      ($light,$gray-700,#d5d5d5, #fff),
+  "dark":       ($dark,$white,#393939,#777),
 );
 
 // =======================全局公用标签基础属性全局变量预设========================
@@ -217,6 +236,10 @@ $btn-padding-y-lg: 0.5rem !default;
 $btn-padding-x-lg: 1rem !default;
 $btn-font-size-lg: $font-size-lg !default;
 
+$btn-neu-normal: 2px !default;
+$btn-neu-large: 4px !default;
+$btn-neu-small: 1px !default;
+
 // 按钮边框
 $btn-border-width: $border-width !default;
 
@@ -263,6 +286,7 @@ $input-font-family: $btn-font-family !default;
 $input-font-size: $btn-font-size !default;
 $input-font-weight: $font-weight-base !default;
 $input-line-height: $btn-line-height !default;
+$input-margin: $input-padding-y;
 
 $input-padding-y-sm: $btn-padding-y-sm !default;
 $input-padding-x-sm: $btn-padding-x-sm !default;
@@ -310,3 +334,42 @@ $progress-bg: $gray-200 !default;
 $progress-border-radius: $border-radius !default;
 $progress-bar-color: $white !default;
 $progress-bar-transition: width 0.6s ease !default;
+
+// modal
+$modal-padding: 8px !default;
+
+//message
+$message-padding: 5px !default;
+
+//list
+$list-padding: $input-padding-y !default;
+$list-item-padding: 5px !default;
+$list-item-margin: 5px !default;
+
+//switch
+$switch-width-default: 40px;
+$switch-height-default: 15px;
+$switch-border-radius-default: 40px;
+
+$switch-width-lg: $switch-width-default*1.5;
+$switch-height-lg: $switch-height-default*1.5;
+$switch-border-radius-lg: $switch-border-radius-default*1.5;
+
+$switch-width-sm: $switch-width-default*0.6;
+$switch-height-sm: $switch-height-default*0.6;
+$switch-border-radius-sm: $switch-border-radius-default*0.6;
+
+//badge
+$badge-padding: 2px 6px 2px 6px !default;
+$badge-font-size: $font-size-sm !default;
+$badge-border-radius: 5px !default;
+
+// layout
+$header-height: 64px;
+$header-padding: 0 50px;
+
+$content-basis: 300px;
+
+$footer-padding: 24px 50px;
+
+$aside-flex-basis: 200px

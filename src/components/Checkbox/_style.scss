@@ -1,0 +1,76 @@
+.yanbrick-checkbox-wrapper {
+    @include neufactory-noactive($white,$neu-whiteshadow1,$neu-whiteshadow2);
+    display: inline-block;
+    padding: 5px;
+    .yanbrick-checkbox-label {
+        cursor: pointer;
+        margin: 0;
+        margin-left: 5px;
+        margin-right: 5px;
+        position: relative;
+        .yanbrick-checkbox-input {
+            opacity: 0;
+            position: absolute;
+        }
+        .yanbrick-checkbox-dot {
+            @include square(20px);
+            @include ringwrapper($white,$neu-whiteshadow1,$neu-whiteshadow2);
+            display: inline-block;
+            position: relative;
+            vertical-align: sub;
+        }
+        .yanbrick-checkbox-dot::before {
+            @include size(3px,15px);
+            @include neufactory-noactive($primary,$neu-blueshadow1,$neu-blueshadow2);
+            content: '';
+            left: 5px;
+            position: absolute;
+            top: 5px;
+            transform: rotate(45deg) scale(0) translate(140%, -40%);
+            transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
+        }
+        .yanbrick-checkbox-dot::after {
+            @include size(3px,9px);
+            @include neufactory-noactive($primary,$neu-blueshadow1,$neu-blueshadow2);
+            content: '';
+            left: 5px;
+            position: absolute;
+            top: 5px;
+            transform:rotate(135deg) scale(0) translate(90%,-35%);
+            transition:all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
+        }
+        .yanbrick-checkbox-dot.checkbox-active::before {
+            @include size(3px,15px);
+            @include neufactory-noactive($primary,$neu-blueshadow1,$neu-blueshadow2);
+            content: '';
+            left: 5px;
+            position: absolute;
+            top: 5px;
+            transform: rotate(45deg) scale(1) translate(140%, -40%);
+            transition: all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
+        }
+        .yanbrick-checkbox-dot.checkbox-active::after {
+            @include size(3px,9px);
+            @include neufactory-noactive($primary,$neu-blueshadow1,$neu-blueshadow2);
+            content: '';
+            left: 5px;
+           
+            position: absolute;
+            top: 5px;
+            transform:rotate(135deg) scale(1) translate(90%,-35%);
+            transition:all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
+        }
+        .yanbrick-checkbox-value {
+            padding: 5px;
+            text-shadow: 1px 1px 4px $neu-whiteshadow1, -1px -1px 4px $neu-whiteshadow2;
+        }
+        .checkbox-active ~ .yanbrick-checkbox-value {
+            color: $primary;
+            transition:all .2s cubic-bezier(.12,.4,.29,1.46) .1s;
+        }
+        &.checkbox-disabled {
+            cursor: not-allowed;
+            opacity: .5;
+        }
+    }
+}

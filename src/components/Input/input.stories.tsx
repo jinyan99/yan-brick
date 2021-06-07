@@ -6,7 +6,7 @@ import { Input } from './input'
 // 受控组件case编写
 const ControlledInput = () => {
   const [value, setValue] = useState('')
-  return <Input value={value} defaultValue={value} onChange={(e) => {setValue(e.target.value)}}/>
+  return <Input value={value} defaultValue={value} setValueCallback={(v)=>{setValue(v)}}/>
 }
 // 默认组件
 const defaultInput = () => (
@@ -65,9 +65,31 @@ const pandInput = () => (
   </>
 )
 
-
-storiesOf('Input component', module)
-  .add('Input', defaultInput)
+storiesOf('ENTRY/Input 输入框', module)
+  .add('Input', defaultInput, {
+    info: {
+      text:  `
+      ~~~js
+       受控组件case编写
+      const ControlledInput = () => {
+        const [value, setValue] = useState('')
+        return <Input value={value} defaultValue={value} setValueCallback={(v)=>{setValue(v)}}/>
+      }
+      // 默认组件
+      const defaultInput = () => (
+        <>
+        <Input
+          style={{width: '300px'}}
+          placeholder="placeholder"
+          onChange={action('changed')}
+        />
+        <ControlledInput />
+        </>
+      )
+      ~~~
+      `, source: false
+    }
+  })
   .add('被禁用的 Input', disabledInput)
   .add('带图标的 Input', iconInput)
   .add('大小不同的 Input', sizeInput)
