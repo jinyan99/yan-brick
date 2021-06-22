@@ -1,6 +1,6 @@
 import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 export declare type ButtonSize = 'lg' | 'sm';
-export declare type ButtonType = 'primary' | 'default' | 'danger' | 'link';
+export declare type ButtonType = 'primary' | 'default' | 'danger' | 'link' | unknown;
 interface BaseButtonProps {
     className?: string;
     /**设置 Button 的禁用 */

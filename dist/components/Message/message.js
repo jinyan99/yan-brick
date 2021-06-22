@@ -20,6 +20,9 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
+/* eslint-disable prefer-const */
+/* eslint-disable react/no-render-return-value */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import Alert from '../Alert';
 import ReactDOM, { createPortal } from 'react-dom';
