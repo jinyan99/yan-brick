@@ -76,7 +76,7 @@ scss放入bigbear-ui/dist/esm/styles/index.scss。
 
 
 
-## @TODO 使用yan-brick-cli
+## @TODO  使用yan-brick-cli
 
 目前暂时只制作了一个模板供下载。如果需要react-router+redux+thunk以及mock数据可以使用此模板快速开发。
 
