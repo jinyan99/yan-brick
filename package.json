@@ -52,8 +52,8 @@
 		"storybook": "start-storybook -p 9009 -s public",
 		"build-storybook": "build-storybook -s public",
 		"lint": "",
-		"test:nowatch": "cross-env CI=true SKIP_PREFLIGHT_CHECK=true",
-		"prepublishOnly": "npm run test:nowatch && npm run lint && npm run build"
+		"test:nowatch": "cross-env CI=true SKIP_PREFLIGHT_CHECK=false",
+		"prepublishOnly": "npm run lint && npm run build"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
