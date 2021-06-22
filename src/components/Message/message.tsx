@@ -170,7 +170,7 @@ function messageRender(
 ) {
   // icon用户不传就以defaultIcon的状态对应为准，传的话就mergeOptions中覆盖掉默认icon值
   defaultOptions.icon = defaultIcon[messageType!];
-  let mergeOptions = {...defaultOptions, ...options};
+  const mergeOptions = {...defaultOptions, ...options};
 
   let container = document.createElement('div');
   container.className = 'yanbrick-message-factory';
@@ -181,7 +181,7 @@ function messageRender(
     }, mergeOptions.timeout)
   };
 
-  let dom = document.createElement('div');
+  const dom = document.createElement('div');
   dom.className = 'yanbrick-message-factory-item';
   container.appendChild(dom);
 
@@ -225,4 +225,4 @@ export const message = {
     messageRender(str, 'dark', options)
 };
 
-export default Message;
+export default Message
