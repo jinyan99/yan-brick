@@ -1,3 +1,6 @@
+/* eslint-disable prefer-const */
+/* eslint-disable react/no-render-return-value */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { FC, ReactNode } from 'react';
 import Alert from '../Alert';
 import ReactDOM, { createPortal } from 'react-dom';

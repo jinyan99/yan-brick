@@ -18,7 +18,7 @@ import classNames from 'classnames';
 
 // 不用enum了，用字符串字面量了更好用些
 export type ButtonSize = 'lg' | 'sm';
-export type ButtonType = 'primary' | 'default' | 'danger' | 'link';
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link'| unknown;
 
 interface BaseButtonProps {//@ANNOTATION1
     className?: string;
